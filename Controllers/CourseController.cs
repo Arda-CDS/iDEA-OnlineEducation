@@ -89,7 +89,28 @@ namespace iDEA.Controllers
 
             return View();
         }
+        public async Task<IActionResult> Session() {
 
+            if (!User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            int AccountID = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
+
+            return View();
+        }
+        public async Task<IActionResult> Contact() {
+
+            if (!User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            int AccountID = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
+
+            return View();
+        }
     }
 
 }
